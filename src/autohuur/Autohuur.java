@@ -32,8 +32,8 @@ public class Autohuur {
 
     @Override
     public String toString() {
-        return "\nautotype: " + ((auto != null) ? auto: "geen auto bekend") +
-                ",\nop naam van: " + klant.getName() +
+        return "\nautotype: " + ((auto != null) ? auto.getType(): "geen auto bekend") +
+                ",\nop naam van: " + ((klant != null) ? klant.getName(): "geen klant bekend") +
                 "\naantal dagen: " + aantalDagen + " en dat kost " + totaalprijs + "\n";
     }
 
@@ -42,6 +42,7 @@ public class Autohuur {
 
         Klant k = new Klant("Mijnheer de Vries");
         k.setKortingsPercentage(10.0);
+        System.out.println("Eerste autohuur: " + ah1.toString());
         ah1.setKlant(k);
         System.out.println("Eerste autohuur: " + ah1.toString());
 
@@ -56,6 +57,10 @@ public class Autohuur {
         ah2.setAuto(a2);
         ah2.setKlant(k);
         ah2.setAantalDagen(1);
+        ah2.totaalprijs();
         System.out.println("Tweede autohuur: " + ah2.toString());
+
+        System.out.println("Gehuurd: " + a1.getType() + "met prijs per dag: " + a1.getType());
+        System.out.println("Gehuurd: " + a2.getType() + "met prijs per dag: " + a2.getType());
     }
 }
