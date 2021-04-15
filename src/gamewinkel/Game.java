@@ -1,7 +1,5 @@
 package gamewinkel;
 
-import java.time.LocalDate;
-
 public class Game {
     private String naam;
     private int releasedate;
@@ -27,10 +25,8 @@ public class Game {
 
     @Override
     public String toString() {
-        return "Game{" +
-                "naam='" + naam + '\'' +
-                ", releasedate=" + releasedate +
-                ", prijs=" + prijs +
-                '}';
+        return naam +
+                " releasedate: " + releasedate +
+                " nieuwprijs: €" + prijs;
     }
 }

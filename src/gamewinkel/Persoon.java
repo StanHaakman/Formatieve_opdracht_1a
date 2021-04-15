@@ -49,10 +49,6 @@ public class Persoon {
         this.geld = geld;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
     public void setGeld(double geld) {
         this.geld = geld;
     }
@@ -67,11 +63,10 @@ public class Persoon {
 
     @Override
     public String toString() {
-        return "Persoon{" +
-                "naam='" + naam + '\'' +
-                ", geld=" + geld +
-                ", games=" + games +
-                '}';
+        return  MessageFormat.format("""
+                {0} heeft een budget van €{1} en bezit de volgende games:
+                {2}
+                """, naam, geld, games);
     }
 
     public static void main(String[] args) {
@@ -92,9 +87,16 @@ public class Persoon {
         p2.koop(g2);
         p2.koop(g1);
         p3.koop(g3);
+        System.out.println();
 
         p1.verkoop(g1, p3);
         p2.verkoop(g2, p3);
         p2.verkoop(g1, p1);
+
+        System.out.println();
+
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p3);
     }
 }
