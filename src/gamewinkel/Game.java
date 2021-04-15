@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Game {
     private String naam;
-    private LocalDate releasedate;
+    private int releasedate;
     private double prijs;
 
     public Game(String naam, int releasedate, double prijs) {
@@ -19,6 +19,10 @@ public class Game {
 
     public double getPrijs() {
         return prijs;
+    }
+
+    public int getReleasedate() {
+        return releasedate;
     }
 
     @Override
