@@ -11,11 +11,7 @@ public class Persoon {
     private List<Game> games = new ArrayList<>();
 
     void koop(Game game) {
-
-        double price = game.getPrijs();
-        for (int i = 0; i < LocalDate.now().getYear() - game.getReleasedate(); i++) {
-            price = price * 0.7;
-        }
+        double price = currentPrice(game);
 
         if (game.getPrijs() <= geld){
             geld = geld - price;
@@ -25,8 +21,27 @@ public class Persoon {
             System.out.println(MessageFormat.format("{0} koopt {1}: Mislukt, Onvoldoende geld", naam, game.getNaam()));
         }
     }
-    void verkoop(){
 
+    void verkoop(Game game, Persoon persoon){
+        double price = currentPrice(game);
+
+        if (games.contains(game) && price <= persoon.getGeld()) {
+            games.remove(game);
+            persoon.games.add(game);
+            persoon.setGeld(persoon.getGeld() - price);
+            geld = geld + price;
+            System.out.println(MessageFormat.format("{0} verkoopt {1} aan {2}: gelukt", naam, game.getNaam(), persoon.getNaam()));
+        } else {
+            System.out.println(MessageFormat.format("{0} verkoopt {1} aan {2}: niet gelukt", naam, game.getNaam(), persoon.getNaam()));
+        }
+    }
+
+    double currentPrice(Game game) {
+        double price = game.getPrijs();
+        for (int i = 0; i < LocalDate.now().getYear() - game.getReleasedate(); i++) {
+            price = price * 0.7;
+        }
+        return price;
     }
 
     public Persoon(String naam, int geld) {
@@ -77,5 +92,9 @@ public class Persoon {
         p2.koop(g2);
         p2.koop(g1);
         p3.koop(g3);
+
+        p1.verkoop(g1, p3);
+        p2.verkoop(g2, p3);
+        p2.verkoop(g1, p1);
     }
 }
