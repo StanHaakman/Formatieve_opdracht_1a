@@ -1,4 +1,4 @@
-package gamewinkel;
+package gameWinkel;
 
 public class Game {
     private String naam;

@@ -1,4 +1,4 @@
-package gamewinkel;
+package gameWinkel;
 
 import java.text.MessageFormat;
 import java.time.LocalDate;
